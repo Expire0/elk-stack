@@ -1,5 +1,5 @@
 # Install and configure Elasticsearch on AWS
-Elasticsearch  makes it easy to deploy, secure, operate, and scale Elasticsearch for log analytics, full text search, application monitoring, and more. 
+Elasticsearch makes it easy to deploy, secure, operate, and scale Elasticsearch for log analytics, full text search, application monitoring, and more. 
 
 ElasticSearch supports following use cases, 
  - Log Analytics
