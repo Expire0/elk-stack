@@ -10,7 +10,7 @@ ElasticSearch supports following use cases,
 
  This document deals with IaaS based implementation of ElasticSearch, If you are looking for Managed ElasticSearch Service - [AWS ElasticSearch Service FAQ](https://aws.amazon.com/elasticsearch-service/faqs/)
 
-
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 ## Step 1: Install Elasticsearch
 
 ### Pre-Requisites
