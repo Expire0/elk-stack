@@ -69,18 +69,16 @@ sudo -i service elasticsearch stop
 Starting elasticsearch:                                    [  OK  ]
 ```
 
-
-```
-
-# Access ElasticSearch through Public IP
+#### Configuring Access to ElasticSearch through Public IP
 Typically you add your corporate IP/private IP and allow the same in the firewall/security group to allow access to ElasticSearch. In our case, just to give a dirty hack to get going we will open to the internet.
 DO THIS ONLY FOR LEARNING PURPOSES - NOT FOR BUSINESS WORKLOADS CONFIGURATIONS
-```
+```sh
 echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
-``
+curl localhost:9200
+```
 We should see something like this:
 ```sh
-curl localhost:9200
+
 [root@ip-10-80-4-74 elasticsearch]# curl localhost:9200
 {
   "name" : "Gr7qXpl",
@@ -101,3 +99,36 @@ curl localhost:9200
 }
 ```
 It is my strong recommendation that you put your servers in a load balacer. Check out how to setup [ELB here](https://www.youtube.com/watch?v=QyjDktNxdQg)
+
+## Installing Pluginsedit
+The documentation for each plugin usually includes specific installation instructions for that plugin, but below we document the various available options:
+```sh
+sudo bin/elasticsearch-plugin install [plugin_name]
+```
+
+Install these plugins if you want to connect to Logstash and Kibana,
+```sh
+sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
+sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
+sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
+```
+
+```sh
+[root@elasticsearch ~]./bin/plugin -install mobz/elasticsearch-head
+[root@elasticsearch ~]./bin/plugin -install lukas-vlcek/bigdesk
+[root@elasticsearch ~]./bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.­4.1
+```
+
+
+
+Another way of creating the repo url
+```sh
+echo '[elasticsearch-6.x]
+name=Elasticsearch repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+' | sudo tee /etc/yum.repos.d/elasticsearch.repo
