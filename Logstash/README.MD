@@ -18,7 +18,9 @@ Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui
 ## Install Logstash
 
 ### Pre-Requisites
-Logstash requires Java 8. Java 9 is not supported. 
+ - An ES Cluster accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
+- Logstash requires Java 8. Java 9 is not supported. 
+
 ```sh
 java --version
 # Install Java v8 (if it is lesser than v8)
@@ -52,11 +54,8 @@ type=rpm-md
 sudo yum -y install logstash
 
 # For manual installations visit
-# https://www.elastic.co/downloads/elasticsearch
+# https://www.elastic.co/guide/en/logstash/6.3/installing-logstash.html
 ```
-### Pre-Requisites
-
-You will need an ES Cluster up and running accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
 
 ## Configure Logstash
 The configuration above tells Logstash to collect all files with .log extention in `/var/log`, `/var/log/message`s and `/var/log/syslog`.
