@@ -13,6 +13,7 @@ Logstash has three main functions
  - **MONITORING**: Have Full Visibility into Your Deployments
  - **MANAGEMENT & ORCHESTRATION**: Centrally Manage Deployments With a Single UI
 
+Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 ## Install Logstash
 
@@ -53,6 +54,9 @@ sudo yum -y install logstash
 # For manual installations visit
 # https://www.elastic.co/downloads/elasticsearch
 ```
+### Pre-Requisites
+
+You will need an ES Cluster up and running accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
 
 ## Configure Logstash
 The configuration above tells Logstash to collect all files with .log extention in `/var/log`, `/var/log/message`s and `/var/log/syslog`.
@@ -116,40 +120,22 @@ sudo -i service logstash start
 
 # To Stop Logstash 
 sudo -i service logstash stop
+
+# Checking Logstash logs
+tail -f /var/log/logstash-stdout.log
 ```
 
-```sh
-[root@ip-10-80-4-74 ~]# sudo -i service elasticsearch start
-Starting elasticsearch:                                    [  OK  ]
-```
 
-#### Configuring Access to ElasticSearch through Public IP
-Typically you add your corporate IP/private IP and allow the same in the firewall/security group to allow access to ElasticSearch. In our case, just to give a dirty hack to get going we will open to the internet.
-DO THIS ONLY FOR LEARNING PURPOSES - NOT FOR BUSINESS WORKLOADS CONFIGURATIONS
-```sh
-echo "network.host: 0.0.0.0" >> /etc/elasticsearch/elasticsearch.yml
-curl localhost:9200
-```
-We should see something like this:
-```sh
+### Searching Logs
+Check the list of documents under `Browser`
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Indices-00.png)
 
-[root@ip-10-80-4-74 elasticsearch]# curl localhost:9200
-{
-  "name" : "Gr7qXpl",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "XouOh_loQ62c3nHcDxbDOQ",
-  "version" : {
-    "number" : "6.3.1",
-    "build_flavor" : "default",
-    "build_type" : "rpm",
-    "build_hash" : "eb782d0",
-    "build_date" : "2018-06-29T21:59:26.107521Z",
-    "build_snapshot" : false,
-    "lucene_version" : "7.3.1",
-    "minimum_wire_compatibility_version" : "5.6.0",
-    "minimum_index_compatibility_version" : "5.0.0"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
-It is my strong recommendation that you put your servers in a load balacer. Check out how to setup [ELB here](https://www.youtube.com/watch?v=QyjDktNxdQg)
+#### Search for `event` or `string`
+Here we are searching for `DCHP` events,
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Search-00.png)
+
+Here we are searching for `permissions` string,
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Search-01.png)
+
+## Next Steps
+ - Visualizing Logs in Kibana - [Follow Here]()
