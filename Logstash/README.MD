@@ -31,7 +31,7 @@ echo $JAVA_HOME
 # export PATH=$JAVA_HOME/bin:$PATH 
 ```
 
-We are going to install ES in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
+We are going to install Logstash in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
 Elasticsearch requires at least Java 8.
 ```sh
 # Accept the ElasticSearch PGP Key
@@ -58,7 +58,7 @@ sudo yum -y install logstash
 ```
 
 ## Configure Logstash
-The configuration above tells Logstash to collect all files with .log extention in `/var/log`, `/var/log/message`s and `/var/log/syslog`.
+The configuration above tells Logstash to collect all files with .log extention in `/var/log`, `/var/log/messages` and `/var/log/syslog`.
 
 ```sh
 echo 'input {
@@ -92,10 +92,10 @@ echo 'filter {
 #### Permissions ERROR
 Logstash needs permissions to access the log files, If they aren't provided you will receive errors like this,
 ```pre
-  [2018-07-20T23:53:30,532][WARN ][logstash.inputs.file ] failed to open /var/log/messages: Permission denied - /var/log/messages
+[2018-07-20T23:53:30,532][WARN ][logstash.inputs.file ] failed to open /var/log/messages: Permission denied - /var/log/messages
 ```
 
-Add a `logstash` group and provide read permissions 
+Add `logstash` group to have read permissions on the log files that you like to be shipped
 ```sh
 chgrp logstash /var/log/*.log /var/log/messages
 chmod g+r /var/log/*.log /var/log/messages
@@ -124,7 +124,6 @@ sudo -i service logstash stop
 tail -f /var/log/logstash-stdout.log
 ```
 
-
 ### Searching Logs
 Check the list of documents under `Browser`
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Indices-00.png)
@@ -137,4 +136,4 @@ Here we are searching for `permissions` string,
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Search-01.png)
 
 ## Next Steps
- - Visualizing Logs in Kibana - [Follow Here]()
+ - Visualizing Logs in Kibana - [Follow Here](https://github.com/miztiik/elk-stack/tree/master/Kibana)
