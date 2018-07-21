@@ -37,20 +37,7 @@ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ### Installing from the RPM repository
 Create a file called `logstash.repo` in the `/etc/yum.repos.d/` directory. The below repo is for Logstash version 6.x
 ```sh
-cat > /etc/yum.repos.d/elasticsearch.repo << "EOF"
-[logstash-6.x]
-name=Elastic repository for 6.x packages
-baseurl=https://artifacts.elastic.co/packages/6.x/yum
-gpgcheck=1
-gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-autorefresh=1
-type=rpm-md
-EOF
-
-```sh
-echo '
-[logstash-6.x]
+echo '[logstash-6.x]
 name=Elastic repository for 6.x packages
 baseurl=https://artifacts.elastic.co/packages/6.x/yum
 gpgcheck=1
