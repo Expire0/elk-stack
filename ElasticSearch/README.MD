@@ -10,6 +10,8 @@ ElasticSearch supports following use cases,
 
  This document deals with IaaS based implementation of ElasticSearch, If you are looking for Managed ElasticSearch Service - [AWS ElasticSearch Service FAQ](https://aws.amazon.com/elasticsearch-service/faqs/)
 
+Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
+
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 ## Step 1: Install Elasticsearch
 
@@ -100,35 +102,11 @@ We should see something like this:
 ```
 It is my strong recommendation that you put your servers in a load balacer. Check out how to setup [ELB here](https://www.youtube.com/watch?v=QyjDktNxdQg)
 
-## Installing Pluginsedit
-The documentation for each plugin usually includes specific installation instructions for that plugin, but below we document the various available options:
+
+## Accessing the ES through GUI
+Install this chrome plugin
 ```sh
-sudo bin/elasticsearch-plugin install [plugin_name]
+https://github.com/mobz/elasticsearch-head
 ```
-
-Install these plugins if you want to connect to Logstash and Kibana,
-```sh
-sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
-sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
-sudo bin/elasticsearch-plugin install mobz/elasticsearch-head
-```
-
-```sh
-[root@elasticsearch ~]./bin/plugin -install mobz/elasticsearch-head
-[root@elasticsearch ~]./bin/plugin -install lukas-vlcek/bigdesk
-[root@elasticsearch ~]./bin/plugin install elasticsearch/elasticsearch-cloud-aws/2.­4.1
-```
-
-
-
-Another way of creating the repo url
-```sh
-echo '[elasticsearch-6.x]
-name=Elasticsearch repository for 6.x packages
-baseurl=https://artifacts.elastic.co/packages/6.x/yum
-gpgcheck=1
-gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=1
-autorefresh=1
-type=rpm-md
-' | sudo tee /etc/yum.repos.d/elasticsearch.repo
+From your browser, poing to the public IP of your ES Cluster at port 9200
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-health-00.png)
