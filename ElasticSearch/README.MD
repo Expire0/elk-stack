@@ -16,7 +16,7 @@ Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui
 ## Step 1: Install Elasticsearch
 
 ### Pre-Requisites
-elasticsearch: the minimum required Java version is 8
+The minimum required Java version is 8.
 ```sh
 java --version
 # Install Java v8 (if it is lesser than v8)
