@@ -9,7 +9,7 @@ Kibana Features:
 
 
 Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
-![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/Kibana-Dashboards.gif)
 ## Install Kibana
 
 ### Pre-Requisites
@@ -83,4 +83,7 @@ tail -f /var/log/logstash-stdout.log
 
 ## Access Kibana
 Check the list of documents under `Browser` with this url `http://KIBANA_SERVER_URL_OR_IP:5601/`
-![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Indices-00.png)
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/Kibana-Dashboards-00.png)
+
+### Visualizing documents
+![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/Kibana-Dashboards-01.png)
