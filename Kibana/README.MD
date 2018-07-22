@@ -23,7 +23,7 @@ We are going to install Kibana in Amazon Linux 2, you should be able to adapt th
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
 ### Installing from the RPM repository
-Create a file called `logstash.repo` in the `/etc/yum.repos.d/` directory. The below repo is for Logstash version 6.x
+Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory. The below repo is for `Kibana` version `6.x`
 ```sh
 echo '[kibana-6.x]
 name=Kibana repository for 6.x packages
@@ -33,7 +33,7 @@ gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=1
 autorefresh=1
 type=rpm-md
-' | sudo tee /etc/yum.repos.d/elasticsearch.repo
+' | sudo tee /etc/yum.repos.d/kibana.repo
 
 # Install from RPM Repo
 sudo yum -y install kibana
@@ -65,18 +65,18 @@ Use the `chkconfig` command to configure Kibana to start automatically when the 
 ```sh
 sudo chkconfig --add kibana
 ```
-## Start Kiabana
+## Start Kibana
 Kibana can be started and stopped using the `service` command
 ```sh
-# To Start/Stop Logstash 
+# To Start/Stop Kibana 
 sudo -i service kibana start
 
 
-# To Stop Logstash 
+# To Stop Kibana 
 sudo -i service kibana stop
 
-# Checking Logstash logs
-tail -f /var/log/logstash-stdout.log
+# Checking Kibana logs
+tail -f /var/log/kibana/kibana.stdout
 ```
 **Note:** Make sure that port 5601 is open in your security group!
 

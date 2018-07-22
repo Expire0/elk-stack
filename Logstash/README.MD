@@ -22,7 +22,7 @@ Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui
 - Logstash requires Java 8. Java 9 is not supported. 
 
 ```sh
-java --version
+java -version
 # Install Java v8 (if it is lesser than v8)
 sudo yum -y install java-1.8.0-openjdk
 sudo yum -y remove java-1.7.0-openjdk

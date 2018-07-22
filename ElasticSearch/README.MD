@@ -10,7 +10,7 @@ ElasticSearch supports following use cases,
 
  This document deals with IaaS based implementation of ElasticSearch, If you are looking for Managed ElasticSearch Service - [AWS ElasticSearch Service FAQ](https://aws.amazon.com/elasticsearch-service/faqs/)
 
-Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
+Follow this article on **[Youtube](https://youtu.be/7WE8AAdGSlM)**
 
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 ## Step 1: Install Elasticsearch
@@ -18,7 +18,7 @@ Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui
 ### Pre-Requisites
 The minimum required Java version is 8.
 ```sh
-java --version
+java -version
 # Install Java v8 (if it is lesser than v8)
 sudo yum -y install java-1.8.0-openjdk
 sudo yum -y remove java-1.7.0-openjdk
