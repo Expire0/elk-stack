@@ -31,13 +31,19 @@ echo $JAVA_HOME
 # export PATH=$JAVA_HOME/bin:$PATH 
 ```
 
-We are going to install Logstash in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
-Elasticsearch requires at least Java 8.
+### Installing from the RPM repository
+We are going to install Logstash in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora. 
+- Accept the GPG key of the repo
+- Create repo URL
+- Install from RPM
+
+#### Accept the GPG key
 ```sh
 # Accept the ElasticSearch PGP Key
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
-### Installing from the RPM repository
+
+#### Create Repo
 Create a file called `logstash.repo` in the `/etc/yum.repos.d/` directory. The below repo is for Logstash version 6.x
 ```sh
 echo '[logstash-6.x]
@@ -49,8 +55,10 @@ enabled=1
 autorefresh=1
 type=rpm-md
 ' | sudo tee /etc/yum.repos.d/elasticsearch.repo
+```
 
-# Install from RPM Repo
+#### Install from RPM
+```sh
 sudo yum -y install logstash
 
 # For manual installations visit
@@ -58,9 +66,10 @@ sudo yum -y install logstash
 ```
 
 ## Configure Logstash
-The configuration above tells Logstash to collect all files with .log extention in `/var/log`, `/var/log/messages` and `/var/log/syslog`.
+The configuration above tells Logstash to collect all files with `.log` extention in `/var/log`, `/var/log/messages` and `/var/log/syslog`. And we will create a filter to prevent Elasticsearch to store logs in the message field and simplify the analysis.
 
 ```sh
+# File Inputs & Outputs
 echo 'input {
   file {
     path => [ "/var/log/*.log", "/var/log/messages", "/var/log/syslog" ]
@@ -73,9 +82,9 @@ output {
     }
     #stdout { codec => rubydebug }
 }' | sudo tee /etc/logstash/conf.d/logstash-syslog.conf
-```
-Next, we will create a filter to prevent Elasticsearch to store logs in the message field and simplify the analysis.
-```sh
+
+
+# Filter configuration
 echo 'filter {
   if [type] == "syslog" {
     grok {
@@ -89,28 +98,24 @@ echo 'filter {
   }
 }' | sudo tee /etc/logstash/conf.d/logstash-syslog-filter.conf
 ```
-#### Permissions ERROR
-Logstash needs permissions to access the log files, If they aren't provided you will receive errors like this,
-```pre
-[2018-07-20T23:53:30,532][WARN ][logstash.inputs.file ] failed to open /var/log/messages: Permission denied - /var/log/messages
-```
-
-Add `logstash` group to have read permissions on the log files that you like to be shipped
+#### Logstash Permissions
+Logstash needs permissions to access the log files, Add `logstash` group to have read permissions on the log files that you like to be shipped
 ```sh
 chgrp logstash /var/log/*.log /var/log/messages
 chmod g+r /var/log/*.log /var/log/messages
 ```
-
+If they aren't provided you will receive errors like this,
+```pre
+[2018-07-20T23:53:30,532][WARN ][logstash.inputs.file ] failed to open /var/log/messages: Permission denied - /var/log/messages
+```
 
 #### Configure Logstash to run as service
-```sh
-/usr/share/logstash/bin/system-install /etc/logstash/startup.options sysv
-```
-
 Use the `chkconfig` command to configure Logstash to start automatically when the system boots up
 ```sh
+/usr/share/logstash/bin/system-install /etc/logstash/startup.options sysv
 sudo chkconfig --add logstash
 ```
+##### Start / Stop Logstash
 Logstash can be started and stopped using the `service` command
 ```sh
 # To Start/Stop Logstash 
@@ -124,7 +129,7 @@ sudo -i service logstash stop
 tail -f /var/log/logstash-stdout.log
 ```
 
-### Searching Logs
+### Searching Logs sent by Logstash in ElasticSearch
 Check the list of documents under `Browser`
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Indices-00.png)
 
