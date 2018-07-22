@@ -69,7 +69,8 @@ Use the `chkconfig` command to configure Kibana to start automatically when the 
 sudo chkconfig --add kibana
 ```
 ## Start Kibana
-Kibana can be started and stopped using the `service` command
+Kibana can be started and stopped using the `service` command.
+**IMPORTANT Note:** Make sure that port 5601 is open in your security group!
 ```sh
 # To Start/Stop Kibana 
 sudo -i service kibana start
@@ -80,7 +81,7 @@ sudo -i service kibana stop
 # Checking Kibana logs
 tail -f /var/log/kibana/kibana.stdout
 ```
-**Note:** Make sure that port 5601 is open in your security group!
+
 
 
 ## Access Kibana
