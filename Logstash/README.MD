@@ -78,7 +78,7 @@ echo 'input {
 }
 output {
     elasticsearch {
-        hosts => ["ec2-18-197-152-116.eu-central-1.compute.amazonaws.com:9200"]
+        hosts => ["ec2-18-197-147-233.eu-central-1.compute.amazonaws.com:9200"]
     }
     #stdout { codec => rubydebug }
 }' | sudo tee /etc/logstash/conf.d/logstash-syslog.conf
@@ -115,7 +115,7 @@ Use the `chkconfig` command to configure Logstash to start automatically when th
 /usr/share/logstash/bin/system-install /etc/logstash/startup.options sysv
 sudo chkconfig --add logstash
 ```
-##### Start / Stop Logstash
+## Start / Stop Logstash
 Logstash can be started and stopped using the `service` command
 ```sh
 # To Start/Stop Logstash 

@@ -10,19 +10,24 @@ Kibana Features:
 
 Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/Kibana-Dashboards.gif)
-## Install Kibana
 
 ### Pre-Requisites
  - An ES Cluster accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
-- An instance sending data to ES using Logstash - [How to configure Logstash on EC2](https://github.com/miztiik/elk-stack/tree/master/Logstash)
+ - An instance sending data to ES using Logstash - [How to configure Logstash on EC2](https://github.com/miztiik/elk-stack/tree/master/Logstash)
 
+## Install Kibana
 We are going to install Kibana in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
+- Accept the GPG key of the repo
+- Create repo URL
+- Install from RPM
 
+#### Accept the GPG key
 ```sh
 # Accept the ElasticSearch PGP Key
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
-### Installing from the RPM repository
+
+#### Create Repo
 Create a file called `kibana.repo` in the `/etc/yum.repos.d/` directory. The below repo is for `Kibana` version `6.x`
 ```sh
 echo '[kibana-6.x]
@@ -34,7 +39,10 @@ enabled=1
 autorefresh=1
 type=rpm-md
 ' | sudo tee /etc/yum.repos.d/kibana.repo
+```
 
+#### Install from RPM
+```sh
 # Install from RPM Repo
 sudo yum -y install kibana
 
@@ -43,24 +51,19 @@ sudo yum -y install kibana
 ```
 
 ## Configuring Kibana via `config file`
-Kibana loads its configuration from the `/etc/kibana/kibana.yml` file by default. The main config item is to update the URL  of Elasticsearch Domain
+Kibana loads its configuration from the `/etc/kibana/kibana.yml` file by default. The main config item is to update the URL of Elasticsearch Domain & make it accessible from different IP(including internet!).
 
 Find the line `elasticsearch.url` and append your `ES Domain URL`:
-```pr
- ]# grep -i elasticsearch.url kibana.yml
-#elasticsearch.url: "http://localhost:9200"
-```
-DIRTY WAY TO update it is, (NON PRODUCTION CONFIGURATION, SECURE THEM REALLY!!!)
 ```sh
+# DIRTY WAY TO update it is, (NON PRODUCTION CONFIGURATION, SECURE THEM REALLY!!!)
+
 echo '
-elasticsearch.url: "http://ec2-18-197-152-116.eu-central-1.compute.amazonaws.com:9200/" 
+elasticsearch.url: "http://ec2-18-197-147-233.eu-central-1.compute.amazonaws.com:9200/" 
 server.host: "0.0.0.0"
 ' | sudo tee /etc/kibana/kibana.yml
 ```
 
-
 #### Configure Kibana to run as service
-
 Use the `chkconfig` command to configure Kibana to start automatically when the system boots up
 ```sh
 sudo chkconfig --add kibana
@@ -70,7 +73,6 @@ Kibana can be started and stopped using the `service` command
 ```sh
 # To Start/Stop Kibana 
 sudo -i service kibana start
-
 
 # To Stop Kibana 
 sudo -i service kibana stop
