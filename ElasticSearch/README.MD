@@ -13,6 +13,13 @@ ElasticSearch supports following use cases,
 Follow this article on **[Youtube](https://youtu.be/7WE8AAdGSlM)**
 
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
+
+### Pre-Requisites
+ - An EC2 Instance- [How to Create EC2 in AWS](https://www.youtube.com/watch?v=N_mP4mIqK8A&list=PLxzKY3wu0_FLaF9Xzpyd9p4zRCikkD9lE&index=11&t=0s)
+ - An Security Group port to be open - [Attach SG to running EC2](https://www.youtube.com/watch?v=GlPTgGZR-j8﻿)
+    - Port 9200: For REST API ( _for learning open to the internet_, usually private subnets in your VPC)
+    - Port 9300: For ES Nodes to communicate ( _for learning open to the internet_, usually private subnets in your VPC) 
+
 ## Step 1: Install Elasticsearch
 
 ### Pre-Requisites
