@@ -23,7 +23,7 @@ We are going to install Kibana in Amazon Linux 2, you should be able to adapt th
 
 #### Accept the GPG key
 ```sh
-# Accept the ElasticSearch PGP Key
+# Accept the ElasticSearch GPG Key
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
 

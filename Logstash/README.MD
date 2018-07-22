@@ -13,7 +13,7 @@ Logstash has three main functions
  - **MONITORING**: Have Full Visibility into Your Deployments
  - **MANAGEMENT & ORCHESTRATION**: Centrally Manage Deployments With a Single UI
 
-Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
+Follow this article on **[Youtube](https://youtu.be/YasrCKykAKo)**
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 ## Install Logstash
 

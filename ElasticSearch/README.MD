@@ -30,7 +30,7 @@ echo $JAVA_HOME
 We are going to install ES in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
 Elasticsearch requires at least Java 8.
 ```sh
-# Accept the ElasticSearch PGP Key
+# Accept the ElasticSearch GPG Key
 sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ```
 ### Installing from the RPM repository
