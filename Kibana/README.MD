@@ -70,6 +70,7 @@ sudo chkconfig --add kibana
 ```
 ## Start Kibana
 Kibana can be started and stopped using the `service` command.
+
 **IMPORTANT Note:** Make sure that port 5601 is open in your security group!
 ```sh
 # To Start/Stop Kibana 
