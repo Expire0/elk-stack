@@ -110,3 +110,6 @@ https://github.com/mobz/elasticsearch-head
 ```
 From your browser, poing to the public IP of your ES Cluster at port 9200
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-health-00.png)
+
+## Next Steps
+ - Pushing ;ogs from Logstash - [Follow Here](https://github.com/miztiik/elk-stack/tree/master/Logstash) - [Youtube](https://youtu.be/YasrCKykAKo)

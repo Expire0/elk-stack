@@ -8,12 +8,12 @@ Kibana Features:
  - **Explore Anomalies with Machine Learning**
 
 
-Follow this article on **[Youtube](https://www.youtube.com/channel/UC_evcfxhjjui5hChhLE08tQ/playlists)**
+Follow this article on **[Youtube](https://youtu.be/TTwI8gPMIVc)**
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/Kibana-Dashboards.gif)
 
 ### Pre-Requisites
- - An ES Cluster accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
- - An instance sending data to ES using Logstash - [How to configure Logstash on EC2](https://github.com/miztiik/elk-stack/tree/master/Logstash)
+ - An ES Cluster accessible through its FQDN - [How to configure ES in AWS on EC2](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch) - [Youtube](https://youtu.be/7WE8AAdGSlM)
+ - An instance sending data to ES using Logstash - [How to configure Logstash on EC2](https://github.com/miztiik/elk-stack/tree/master/Logstash) - [Youtube](https://youtu.be/YasrCKykAKo)
 
 ## Install Kibana
 We are going to install Kibana in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.

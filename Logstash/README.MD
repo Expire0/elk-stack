@@ -141,4 +141,4 @@ Here we are searching for `permissions` string,
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-Search-01.png)
 
 ## Next Steps
- - Visualizing Logs in Kibana - [Follow Here](https://github.com/miztiik/elk-stack/tree/master/Kibana)
+ - Visualizing Logs in Kibana - [Follow Here](https://github.com/miztiik/elk-stack/tree/master/Kibana) - [Youtube](https://youtu.be/TTwI8gPMIVc)
