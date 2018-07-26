@@ -5,3 +5,37 @@ Filebeat
 output.logstash:
   # The Logstash hosts
    hosts: ["localhost:5044"]
+
+/etc/logstash/conf.d/logstash-syslog.conf
+input {
+  file {
+    path => [ "/var/log/*.log", "/var/log/messages", "/var/log/syslog" ]
+    type => "syslog"
+  }
+  beats {
+        port => "5044"
+    }
+}
+
+output {
+    elasticsearch {
+        hosts => ["ip:9200"]
+    }
+    #stdout { codec => rubydebug }
+}
+
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}" }
+      add_field => [ "received_at", "%{@timestamp}" ]
+      add_field => [ "received_from", "%{host}" ]
+    }
+    date {
+      match => [ "syslog_timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    }
+  }
+  grok {
+    match => { "source" => "%{GREEDYDATA}/%{GREEDYDATA:app}.log" }
+    }
+}
