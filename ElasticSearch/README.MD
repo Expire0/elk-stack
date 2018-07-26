@@ -28,8 +28,8 @@ The minimum required Java version is 8.
 ```sh
 
 # Install Java v8 (if it is lesser than v8)
-yum -y remove java-1.7.0-openjdk
-yum -y install java-1.8.0-openjdk
+yum -y remove java
+yum -y install java
 java -version
 ```
 
