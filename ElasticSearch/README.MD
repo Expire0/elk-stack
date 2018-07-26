@@ -23,15 +23,14 @@ Follow this article on **[Youtube](https://youtu.be/7WE8AAdGSlM)**
 ## Step 1: Install Elasticsearch
 
 ### Pre-Requisites
+Modified for RHEL/CENTOS 7
 The minimum required Java version is 8.
 ```sh
-java -version
+
 # Install Java v8 (if it is lesser than v8)
-sudo yum -y install java-1.8.0-openjdk
-sudo yum -y remove java-1.7.0-openjdk
+yum -y remove java-1.7.0-openjdk
+yum -y install java-1.8.0-openjdk
 java -version
-echo $JAVA_HOME
-# export PATH=$JAVA_HOME/bin:$PATH 
 ```
 
 We are going to install ES in Amazon Linux 2, you should be able to adapt this procedure for say RHEL/CentOS/Fedora.
