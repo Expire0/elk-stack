@@ -61,20 +61,20 @@ sudo yum -y install elasticsearch
 ```
 
 ## Running Elasticsearch
-Use the `chkconfig` command to configure Elasticsearch to start automatically when the system boots up
+Use the `systemd` command to configure Elasticsearch to start automatically when the system boots up
 ```sh
-sudo chkconfig --add elasticsearch
+systemctl enable elasticsearch
 ```
 Elasticsearch can be started and stopped using the `service` command
 ```sh
 # To Start/Stop Elasticsearch 
-sudo -i service elasticsearch start
-sudo -i service elasticsearch stop
+systemctl start elasticsearch 
+systemctl stop elasticsearch 
 ```
 
 ```sh
-[root@ip-10-80-4-74 ~]# sudo -i service elasticsearch start
-Starting elasticsearch:                                    [  OK  ]
+[root@ip-10-80-4-74 ~]# systemctl start elasticsearch
+
 ```
 
 #### Configuring Access to ElasticSearch through Public IP
@@ -118,4 +118,4 @@ From your browser, poing to the public IP of your ES Cluster at port 9200
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/ELK-health-00.png)
 
 ## Next Steps
- - Pushing logs from Logstash to ElastiSearch - [Follow Here](https://github.com/miztiik/elk-stack/tree/master/Logstash) - [Youtube](https://youtu.be/YasrCKykAKo)
+ - Pushing logs from Logstash to ElastiSearch - [Youtube](https://youtu.be/YasrCKykAKo)
