@@ -66,7 +66,7 @@ server.host: "0.0.0.0"
 #### Configure Kibana to run as service
 Use the `chkconfig` command to configure Kibana to start automatically when the system boots up
 ```sh
-sudo chkconfig --add kibana
+systemctl enable kibana
 ```
 ## Start Kibana
 Kibana can be started and stopped using the `service` command.
@@ -74,10 +74,8 @@ Kibana can be started and stopped using the `service` command.
 **IMPORTANT Note:** Make sure that port 5601 is open in your security group!
 ```sh
 # To Start/Stop Kibana 
-sudo -i service kibana start
-
-# To Stop Kibana 
-sudo -i service kibana stop
+systemctl start kibana
+systemctl stop kibana
 
 # Checking Kibana logs
 tail -f /var/log/kibana/kibana.stdout
