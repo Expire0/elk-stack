@@ -24,11 +24,9 @@ Follow this article on **[Youtube](https://youtu.be/YasrCKykAKo)**
 ```sh
 java -version
 # Install Java v8 (if it is lesser than v8)
-sudo yum -y install java-1.8.0-openjdk
-sudo yum -y remove java-1.7.0-openjdk
-java -version
-echo $JAVA_HOME
-# export PATH=$JAVA_HOME/bin:$PATH 
+yum -y remove java
+yum -y install java
+
 ```
 
 ### Installing from the RPM repository
@@ -110,20 +108,17 @@ If they aren't provided you will receive errors like this,
 ```
 
 #### Configure Logstash to run as service
-Use the `chkconfig` command to configure Logstash to start automatically when the system boots up
+Use the `systemd` command to configure Logstash to start automatically when the system boots up
 ```sh
-/usr/share/logstash/bin/system-install /etc/logstash/startup.options sysv
-sudo chkconfig --add logstash
+systemctl enable logstash
 ```
 ## Start / Stop Logstash
 Logstash can be started and stopped using the `service` command
 ```sh
 # To Start/Stop Logstash 
-sudo -i service logstash start
+systemctl start logstash 
+systemctl stop logstash
 /usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/ &
-
-# To Stop Logstash 
-sudo -i service logstash stop
 
 # Checking Logstash logs
 tail -f /var/log/logstash-stdout.log
