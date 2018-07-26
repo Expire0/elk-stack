@@ -2,6 +2,7 @@
 - [Install & Configure ElasticSearch](https://github.com/miztiik/elk-stack/tree/master/ElasticSearch)
 - [LogStash](https://github.com/miztiik/elk-stack/tree/master/Logstash)
 - [Kibana](https://github.com/miztiik/elk-stack/tree/master/Kibana)
+- [filebeat]https://www.elastic.co/products/beats/filebeat)
 
 ![](https://raw.githubusercontent.com/miztiik/elk-stack/master/images/elk.png)
 
