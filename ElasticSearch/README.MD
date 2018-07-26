@@ -119,3 +119,4 @@ From your browser, poing to the public IP of your ES Cluster at port 9200
 
 ## Next Steps
  - Pushing logs from Logstash to ElastiSearch - [Youtube](https://youtu.be/YasrCKykAKo)
+ https://github.com/airtime166/elk-stack/tree/master/Logstash
